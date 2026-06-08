@@ -1,0 +1,59 @@
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: var(--bg-main);
+  transition: all 0.3s ease;
+}
+
+.mobile-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 40;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(153, 27, 27, 0.2);
+  backdrop-filter: blur(4px);
+  z-index: 45;
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 1rem;
+    padding-top: 4rem;
+  }
+}
+
+/* Estilos para componentes comunes */
+h1, h2, h3 {
+  color: var(--secondary);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+button {
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}

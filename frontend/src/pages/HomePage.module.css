@@ -1,0 +1,244 @@
+.container {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* HERO SECTION */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.heroContent h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.heroContent h1 span {
+  color: var(--primary);
+}
+
+.heroContent p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.primaryBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.3);
+}
+
+.primaryBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* TEXT SECTIONS (2.9 & 2.10.6) */
+.textSection {
+  background: white;
+  padding: 3rem;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  margin-bottom: 4rem;
+  box-shadow: var(--shadow);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2rem;
+  color: var(--secondary);
+  margin: 0;
+}
+
+.textGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+.textGrid strong {
+  color: var(--primary);
+}
+
+/* FEATURES GRID (2.10) */
+.fullWidthHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.fullWidthHeader h2 {
+  font-size: 2.5rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.fullWidthHeader p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+.featureCard {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.iconBox {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.featureCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+}
+
+.featureCard p {
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* IMPORTANCE SECTION (CONCLUSION) */
+.importanceSection {
+  background: var(--secondary);
+  color: white;
+  padding: 4rem;
+  border-radius: 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.importanceContent {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.importanceContent h3 {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+.importanceContent p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+/* DECORATIVE ELEMENTS */
+.heroImage {
+  display: flex;
+  justify-content: center;
+}
+
+.matrixPreview {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 1rem;
+  background: #f1f5f9;
+  padding: 2rem;
+  border-radius: 24px;
+  transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.05);
+}
+
+.matrixCell {
+  height: 100px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+@media (max-width: 1100px) {
+  .features { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .actions { justify-content: center; }
+  .textGrid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .features { grid-template-columns: 1fr; }
+  .heroImage { display: none; }
+  .importanceSection { padding: 2rem; }
+}

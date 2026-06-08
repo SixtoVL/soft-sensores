@@ -1,0 +1,27 @@
+.container {
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formulaBox {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  overflow-x: auto;
+}
+
+.formulaBox h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #64748b;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

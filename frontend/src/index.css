@@ -1,0 +1,35 @@
+:root {
+  --primary: #dc2626; /* Rojo vibrante */
+  --primary-hover: #b91c1c;
+  --primary-light: #fee2e2;
+  --secondary: #991b1b;
+  --accent: #ef4444;
+  --bg-main: #fbfbfb; /* Blanco casi puro con un toque de profundidad */
+  --bg-card: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border: #f3f4f6; /* Borde un poco más neutro para acompañar al blanco */
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  width: 100%;
+}

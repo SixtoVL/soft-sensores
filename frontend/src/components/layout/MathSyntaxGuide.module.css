@@ -1,0 +1,222 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.triggerButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: white;
+  border: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  color: var(--text-muted);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.triggerButton:hover {
+  background-color: var(--bg-main);
+  color: var(--secondary);
+  border-color: var(--primary);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background-color: white;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modalHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.titleGroup h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin: 0;
+}
+
+.iconPrimary {
+  color: var(--primary);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.closeButton:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.modalBody {
+  padding: 1.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  position: relative;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.hint {
+  font-style: italic;
+  font-size: 0.85rem !important;
+  color: var(--text-muted) !important;
+  margin-top: 0.25rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.gridItem {
+  background: var(--bg-main);
+  padding: 0.75rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid var(--border);
+}
+
+.gridItem span:last-child {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.code {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
+.infoBox {
+  background: var(--primary-light);
+  border-left: 4px solid var(--primary);
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+  margin-top: 1.5rem;
+}
+
+.infoBox h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.infoBox p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--secondary);
+  line-height: 1.5;
+}
+
+.modalFooter {
+  padding: 1rem 1.5rem;
+  background: var(--bg-main);
+  text-align: right;
+}
+
+.primaryButton {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.primaryButton:hover {
+  background: var(--primary-hover);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
