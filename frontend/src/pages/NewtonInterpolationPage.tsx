@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { NewtonInterpolationForm } from "../components/forms/NewtonInterpolationForm";
 import { SimpleFormulaDisplay } from "../components/results/SimpleFormulaDisplay";
 import { PlotlyChart as InterpolationChart }  from "../components/visualizers/PlotlyChart";
@@ -9,6 +9,7 @@ import { useNewtonInterpolation } from "../hooks/useNewtonInterpolation";
 import { ExportExcelButton } from "../components/results/ExportExcelButton";
 import { useQueryClient } from "@tanstack/react-query";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { SENSOR_TYPES } from "../schemas/sensor.schema";
 import clsx from "clsx";
 import styles from "./NewtonInterpolationPage.module.css";
 
@@ -34,7 +35,13 @@ export const NewtonInterpolationPage: React.FC = () => {
     ],
     x_a_evaluar: 3,
     metodo: "divididas",
+    sensorId: "termistor",
   };
+
+  const currentSensor = useMemo(() => 
+    SENSOR_TYPES.find(s => s.id === (formValues?.sensorId || "termistor")) || SENSOR_TYPES[0],
+    [formValues?.sensorId]
+  );
 
   return (
     <div className={styles.pageContainer}>
@@ -150,8 +157,12 @@ export const NewtonInterpolationPage: React.FC = () => {
                           textAlign: "left",
                         }}
                       >
-                        <th style={{ padding: "0.75rem" }}>x_i</th>
-                        <th style={{ padding: "0.75rem" }}>f[x_i]</th>
+                        <th style={{ padding: "0.75rem" }}>
+                          {currentSensor.placeholderX} ({currentSensor.unitX})
+                        </th>
+                        <th style={{ padding: "0.75rem" }}>
+                          {currentSensor.placeholderY} ({currentSensor.unitY})
+                        </th>
                         {data.tabla[0].slice(2).map((_, i) => (
                           <th key={i}>Orden {i + 1}</th>
                         ))}

@@ -204,30 +204,20 @@
 .heroImage {
   display: flex;
   justify-content: center;
-}
-
-.matrixPreview {
-  display: grid;
-  grid-template-columns: repeat(3, 100px);
-  gap: 1rem;
-  background: #f1f5f9;
-  padding: 2rem;
-  border-radius: 24px;
-  transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);
-  box-shadow: 20px 20px 60px rgba(0,0,0,0.05);
-}
-
-.matrixCell {
-  height: 100px;
-  background: white;
-  border-radius: 12px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  color: var(--primary);
-  font-size: 1rem;
+}
+
+.sensorsHeroImg {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  transition: transform 0.5s ease;
+}
+
+.sensorsHeroImg:hover {
+  transform: scale(1.02);
 }
 
 @media (max-width: 1100px) {

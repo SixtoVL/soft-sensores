@@ -11,6 +11,7 @@ import {
   Microscope,
   Factory
 } from "lucide-react";
+import sensorsImg from "../assets/sensores.webp";
 import styles from "./HomePage.module.css";
 
 const HomePage: React.FC = () => {
@@ -22,16 +23,16 @@ const HomePage: React.FC = () => {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <div className={styles.badge}>
-            <Zap size={14} /> Soft-Termistores v1.0
+            <Zap size={14} /> Soft-Sensores v1.0
           </div>
           <h1>
             Interpolación de Newton para <br />
-            <span>Calibración de Sensores NTC</span>
+            <span>Calibración de Sensores Industriales</span>
           </h1>
           <p>
-            El software desarrollado tiene como propósito estimar la temperatura correspondiente 
-            a una lectura de resistencia obtenida de un termistor NTC mediante la aplicación 
-            del método de interpolación de Newton con diferencias finitas hacia adelante.
+            Plataforma avanzada para la conversión y estimación de magnitudes físicas. 
+            Utiliza métodos numéricos de Newton para transformar señales eléctricas en datos 
+            precisos de temperatura, presión, nivel, flujo y más.
           </p>
           <div className={styles.actions}>
             <button
@@ -43,17 +44,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         <div className={styles.heroImage}>
-          <div className={styles.matrixPreview}>
-            {[...Array(9)].map((_, i) => (
-              <div
-                key={i}
-                className={styles.matrixCell}
-                style={{ opacity: Math.random() * 0.7 + 0.3 }}
-              >
-                {(Math.random() * 20 - 10).toFixed(2)}
-              </div>
-            ))}
-          </div>
+          <img src={sensorsImg} alt="Sensores Industriales" className={styles.sensorsHeroImg} />
         </div>
       </section>
 
@@ -67,16 +58,16 @@ const HomePage: React.FC = () => {
         </div>
         <div className={styles.textGrid}>
           <p>
-            Los sistemas modernos de adquisición de datos frecuentemente reciben señales eléctricas 
-            que deben convertirse en magnitudes físicas comprensibles para el usuario. Por ejemplo, 
-            un termistor puede generar una resistencia de 9200 Ω, pero el usuario necesita conocer 
-            la temperatura correspondiente.
+            Los sistemas modernos de adquisición de datos reciben señales eléctricas 
+            (voltaje, corriente, resistencia) que deben convertirse en magnitudes físicas 
+            comprensibles. Cuando un valor medido no aparece exactamente en la tabla de 
+            referencia, la interpolación es la clave para una lectura precisa.
           </p>
           <p>
-            Cuando dicho valor no aparece exactamente en la tabla de calibración, la <strong>interpolación </strong> 
-            permite estimar la magnitud asociada utilizando los datos experimentales disponibles. 
-            En consecuencia, actúa como un mecanismo de conversión fundamental en sistemas de 
-            instrumentación y control industrial.
+            Mediante el uso de <strong>diferencias divididas y finitas</strong>, nuestro sistema 
+            permite estimar cualquier magnitud asociada utilizando datos experimentales, 
+            actuando como un mecanismo de conversión fundamental en instrumentación y 
+            control industrial.
           </p>
         </div>
       </section>
@@ -84,21 +75,32 @@ const HomePage: React.FC = () => {
       {/* SECCIÓN 2.10: APLICACIONES INDUSTRIALES */}
       <section className={styles.features}>
         <div className={styles.fullWidthHeader}>
-          <h2>Aplicaciones Industriales del Método de Newton</h2>
+          <h2>Versatilidad del Método de Newton</h2>
           <p>
-            Aunque este proyecto se centra en termistores NTC, el método de Newton con diferencias 
-            finitas es una herramienta versátil en múltiples campos de la instrumentación.
+            Desde la termometría hasta la detección de gases, el método de Newton es una 
+            herramienta indispensable en múltiples campos de la ingeniería y la manufactura.
           </p>
         </div>
         
+        <div className={styles.featureCard}>
+          <div className={styles.iconBox}>
+            <Activity />
+          </div>
+          <h3>Termistores (Temp.)</h3>
+          <p>
+            Convierte lecturas de resistencia (Ω) en temperaturas precisas (°C/°F), 
+            compensando la no linealidad característica de los sensores NTC.
+          </p>
+        </div>
+
         <div className={styles.featureCard}>
           <div className={styles.iconBox}>
             <Gauge />
           </div>
           <h3>Sensores de Presión</h3>
           <p>
-            Permite estimar la presión (Pa, bar, psi) cuando la lectura eléctrica se encuentra 
-            entre dos valores de la tabla de calibración del fabricante, crucial en plantas petroquímicas.
+            Estima presiones (Pa, bar, psi) a partir de señales de voltaje o corriente, 
+            crucial para la precisión en sistemas hidráulicos y neumáticos.
           </p>
         </div>
 

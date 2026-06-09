@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Plus,
   Trash2,
   Calculator,
   ArrowDownRight,
   ArrowUpRight,
+  Settings2,
 } from "lucide-react";
 import type {
   DividedDifferencesRequest
 } from "../../schemas/interpolation.schema";
+import { SENSOR_TYPES, type SensorConfig } from "../../schemas/sensor.schema";
 import styles from "./NewtonInterpolationForm.module.css";
 import clsx from "clsx";
 
 interface Props {
   onSubmit: (data: DividedDifferencesRequest) => void;
   isLoading: boolean;
-  initialValues?: DividedDifferencesRequest;
+  initialValues?: DividedDifferencesRequest & { sensorId?: string };
 }
 
 export const NewtonInterpolationForm: React.FC<Props> = ({
@@ -30,6 +32,12 @@ export const NewtonInterpolationForm: React.FC<Props> = ({
       { x: 2, y: 4 },
       { x: 4, y: 16 },
     ],
+  );
+  const [sensorId, setSensorId] = useState<string>(initialValues?.sensorId || "termistor");
+  
+  const currentSensor = useMemo(() => 
+    SENSOR_TYPES.find(s => s.id === sensorId) || SENSOR_TYPES[0],
+    [sensorId]
   );
   const [xAEvaluar, setXAEvaluar] = useState<number | string>(
     initialValues?.x_a_evaluar ?? 3,
@@ -111,7 +119,8 @@ export const NewtonInterpolationForm: React.FC<Props> = ({
       metodo,
       direccion: metodo === "finitas" ? direccion : undefined,
       pivote: metodo === "finitas" ? pivote : undefined,
-    });
+      sensorId, // Añadimos el sensorId para persistencia en el front
+    } as any);
   };
 
   return (
@@ -126,11 +135,37 @@ export const NewtonInterpolationForm: React.FC<Props> = ({
       </header>
 
       <form onSubmit={handleSubmit} className={styles.form}>
+        {/* Selector de Sensor */}
+        <section className={styles.formSection} style={{ marginBottom: "1rem" }}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionTitle}>
+              <Settings2 size={18} />
+              <h3>Tipo de Sensor / Aplicación</h3>
+            </div>
+          </div>
+          <select
+            value={sensorId}
+            onChange={(e) => setSensorId(e.target.value)}
+            className={styles.mainInput}
+            style={{ width: "100%", cursor: "pointer", marginBottom: "0.5rem" }}
+          >
+            {SENSOR_TYPES.map((sensor) => (
+              <option key={sensor.id} value={sensor.id}>
+                {sensor.name}
+              </option>
+            ))}
+          </select>
+          <div style={{ fontSize: "0.75rem", color: "#64748b", marginTop: "0.25rem" }}>
+            Eje X: {currentSensor.placeholderX} ({currentSensor.unitX}) <br />
+            Eje Y: {currentSensor.placeholderY} ({currentSensor.unitY})
+          </div>
+        </section>
+
         <section className={styles.formSection}>
           <div className={styles.sectionHeader}>
             <div className={styles.sectionTitle}>
               <Plus size={18} />
-              <h3>Puntos (x, y)</h3>
+              <h3>Puntos ({currentSensor.unitX}, {currentSensor.unitY})</h3>
             </div>
             <button
               type="button"
@@ -145,28 +180,32 @@ export const NewtonInterpolationForm: React.FC<Props> = ({
             {puntos.map((punto, index) => (
               <div key={index} className={styles.itemRow}>
                 <span className={styles.itemIndex}>{index}</span>
-                <input
-                  type="number"
-                  step="any"
-                  placeholder="x"
-                  value={punto.x}
-                  onChange={(e) =>
-                    handleUpdatePoint(index, "x", e.target.value)
-                  }
-                  className={styles.mainInput}
-                  required
-                />
-                <input
-                  type="number"
-                  step="any"
-                  placeholder="y"
-                  value={punto.y}
-                  onChange={(e) =>
-                    handleUpdatePoint(index, "y", e.target.value)
-                  }
-                  className={styles.mainInput}
-                  required
-                />
+                <div style={{ position: "relative", flex: 1 }}>
+                  <input
+                    type="number"
+                    step="any"
+                    placeholder={currentSensor.unitX}
+                    value={punto.x}
+                    onChange={(e) =>
+                      handleUpdatePoint(index, "x", e.target.value)
+                    }
+                    className={styles.mainInput}
+                    required
+                  />
+                </div>
+                <div style={{ position: "relative", flex: 1 }}>
+                  <input
+                    type="number"
+                    step="any"
+                    placeholder={currentSensor.unitY}
+                    value={punto.y}
+                    onChange={(e) =>
+                      handleUpdatePoint(index, "y", e.target.value)
+                    }
+                    className={styles.mainInput}
+                    required
+                  />
+                </div>
                 <button
                   type="button"
                   onClick={() => handleRemovePoint(index)}

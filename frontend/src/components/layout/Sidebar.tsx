@@ -28,8 +28,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     <aside className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
       <div className={styles.logo}>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          <div className={styles.logoIcon}>MN</div>
-          <span>Métodos Numéricos</span>
+          <div className={styles.logoIcon}>CSI</div>
+          <span>Calibración de Sensores Industriales</span>
         </div>
         <button className={styles.closeBtn} onClick={onClose}>
           <X size={20} />
